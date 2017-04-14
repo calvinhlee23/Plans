@@ -1,9 +1,10 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   def create
+    flash
     user = User.new(users_param)
     if user.save
       login(user)
-      redirect_to api_user_url(user)
+      redirect_to api_user_path(user)
     end
   end
 
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(id)
     render :show
   end
-  
+
   def update
 
   end
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def users_param
-    params.permit(:email, :password, :email)
+    params.permit(:user_name, :password, :email)
   end
 
 end

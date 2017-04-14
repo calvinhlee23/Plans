@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
     pass.is_password?(pw)
   end
 
+
 end
