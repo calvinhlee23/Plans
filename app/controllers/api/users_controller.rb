@@ -1,10 +1,15 @@
 class Api::UsersController < ApplicationController
+
   def create
-    flash
+    p '##################################################'
+    p "hiiiiiiiiiiiiiiiiiiii"
     user = User.new(users_param)
     if user.save
-      login(user)
-      redirect_to api_user_path(user)
+      p "yoyoyoyoyoyo"
+      # login(user)
+      render json: user
+    else
+      render user.errors.full_messages
     end
   end
 
