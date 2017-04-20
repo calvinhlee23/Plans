@@ -9,3 +9,4 @@ document.addEventListener("DOMContentLoaded", () => {
   store = configureStore();
   ReactDOM.render(<RootComponent store = {store}/>, document.getElementById("PLANS"));
 });
+    

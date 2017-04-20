@@ -26,5 +26,16 @@ class User < ActiveRecord::Base
     pass.is_password?(pw)
   end
 
+  has_many(
+    attendance:
+    class_name: "Attendance",
+    foreign_key: :user_id
+  )
+
+  has_many(
+    :events,
+    class_name: "Event",
+    foreign_key: :user_id
+  )
 
 end
