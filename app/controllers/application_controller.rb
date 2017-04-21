@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def login(user)
     user.reset_session_token
     session[:session] = user.session_token
-    get_current_user
+    redirect_to api_user_path(get_current_user)
   end
 
   def logged_in?
