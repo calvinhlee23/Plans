@@ -2,6 +2,7 @@ class Api::EventsController < ApplicationController
   def create
     raise "You need to be logged in to create events" unless get_current_user
     event = Event.new(events_param)
+    event.creator_id = get_current_user.id
     if event.save
       render json: event
     else

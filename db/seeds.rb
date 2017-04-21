@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 u = User.create({user_name: "calvin", email: "hello@hello.com", password: "password"})
-a = Event.create({host: "user", title: "yolo club", location: "location",
+a = Event.create({host: "user", creator_id: 1, title: "yolo club", location: "location",
                attnd_limit: 1, event_date_time: "04-01-2017"})
 b = Attendance.create({user_id: 1, event_id: 1})
