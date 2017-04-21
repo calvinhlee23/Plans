@@ -3,13 +3,13 @@ class Event < ActiveRecord::Base
   validate :ensure_attnd_limit
 
   has_many(
-    participants:
+    :participants,
     class_name: "Attendance",
     foreign_key: :event_id
   )
-  
+
   private
   def ensure_attnd_limit
-    self.attnd_limit = -1 ? self.attnd_limit < -1 : (self.attnd_limit).ceil
+    self.attnd_limit <= -1 ? (-1):(self.attnd_limit).ceil
   end
 end

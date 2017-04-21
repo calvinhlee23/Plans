@@ -27,14 +27,14 @@ class User < ActiveRecord::Base
   end
 
   has_many(
-    attendance:
+    :tickets,
     class_name: "Attendance",
     foreign_key: :user_id
   )
 
   has_many(
     :events,
-    class_name: "Event",
+    through: :tickets,
     foreign_key: :user_id
   )
 

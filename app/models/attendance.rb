@@ -18,8 +18,8 @@ class Attendance < ActiveRecord::Base
   private
 
   def check_event_not_full
-    count = Attendance.find_by_event_id(self.event_id).count()
-    unless count < Event.find_by_id(self.event_id)
+    count = Attendance.where(event_id: self.event_id).count()
+    if count != -1 && count >= Event.find_by_id(self.event_id).attnd_limit
       raise "Event is full"
     end
   end
