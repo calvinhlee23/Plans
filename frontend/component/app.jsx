@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from './menu.jsx';
 
 class Test extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class Test extends React.Component {
 
 const App = ({children}) => (
   <div>
+  <Menu/>
   <Test/>
   {children}
   </div>
