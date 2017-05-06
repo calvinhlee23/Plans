@@ -7,6 +7,6 @@ import RootComponent from './component/root_component';
 document.addEventListener("DOMContentLoaded", () => {
   var store;
   store = configureStore();
+  window.store = store;
   ReactDOM.render(<RootComponent store = {store}/>, document.getElementById("PLANS"));
 });
-    

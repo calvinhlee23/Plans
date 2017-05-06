@@ -9,6 +9,6 @@ export const login = (type, user = null) => {
   user
 }
 
-export const logout = (user) => {
+export const logout = () => {
   type: SessionConstants.LOG_OUT
 }

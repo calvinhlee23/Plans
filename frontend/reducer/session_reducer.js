@@ -3,12 +3,16 @@ import SessionConstants from '../action/session_actions.js';
 const defaultState = {
   currentUser: null,
 }
-export default const SessionReducer = (state = defaultState, action){
+
+const SessionReducer = (state = defaultState, action) => {
+
   switch (action.type) {
-    case :
+    case "hi":
 
       break;
     default:
-
+      return state;
   }
 }
+
+export default SessionReducer;

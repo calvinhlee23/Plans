@@ -1,5 +1,5 @@
 import React from 'react';
-import Menubar from './menu/menubar.jsx';
+import MenubarContainer from './menu/menubar_container.jsx';
 
 export class Test extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export class Test extends React.Component {
 
 const App = ({children}) => (
   <div>
-  <Menubar/>
+  <MenubarContainer/>
   {children}
   </div>
 );
