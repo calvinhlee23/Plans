@@ -1,7 +1,7 @@
 import React from 'react';
-import Menu from './menu.jsx';
+import Menubar from './menu/menubar.jsx';
 
-class Test extends React.Component {
+export class Test extends React.Component {
   render() {
     return (<div>hello this is the first basic page of Plans!</div>);
   }
@@ -9,8 +9,7 @@ class Test extends React.Component {
 
 const App = ({children}) => (
   <div>
-  <Menu/>
-  <Test/>
+  <Menubar/>
   {children}
   </div>
 );
