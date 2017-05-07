@@ -4,11 +4,11 @@ export const SessionConstants = {
   PLANS_LOGIN: "PLANS_LOGIN"
 };
 
-export const login = (type, user = null) => {
+export const login = (type, user = null) => ({
   type,
   user
-}
+});
 
-export const logout = () => {
+export const logout = () => ({
   type: SessionConstants.LOG_OUT
-}
+});

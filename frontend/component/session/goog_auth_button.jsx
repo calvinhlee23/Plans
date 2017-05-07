@@ -5,6 +5,8 @@ export default class GoogAuthButton extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+      window.props = this.props;
+      window.p = SessionConstants
   }
   handleClick () {
     this.props.login(SessionConstants.GOOGLE_LOGIN)

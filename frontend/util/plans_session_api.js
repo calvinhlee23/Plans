@@ -1,4 +1,4 @@
-export default const Plans_Session_API = {
+const Plans_Session_API = {
   login: (user, success, error) => {
     $.ajax({
       method: "POST",
@@ -18,3 +18,5 @@ export default const Plans_Session_API = {
     })
   }
 }
+
+export default Plans_Session_API

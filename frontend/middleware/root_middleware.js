@@ -1,2 +1,6 @@
 import {applyMiddleware} from 'redux';
-export default applyMiddleware();
+import SessionMiddleware from './session_middleware';
+
+export default applyMiddleware(
+  SessionMiddleware
+);

@@ -8,8 +8,8 @@ class SessionForm extends React.Component {
   render() {
     return(
       <div className = "SessionForm">
-        <GoogAuthButton login = {this.props.login.bind(this)}
-                        logout = {this.props.logout.bind(this)}/>
+        <GoogAuthButton login = {this.props.login}
+                        logout = {this.props.logout}/>
         <div>Sign In Section</div>
         <div>Sign Up Section</div>
       </div>

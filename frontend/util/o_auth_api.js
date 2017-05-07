@@ -1,6 +1,6 @@
 import Plans_Session_API from './plans_session_api.js';
 
-export default const OAuth_API = {
+const OAuth_API = {
   login: (success, error) => {
     // do whatever is necessary to authenticate with google
     // then authenticate with plans
@@ -9,4 +9,6 @@ export default const OAuth_API = {
   logout: (error) => {
 
   }
-}
+};
+
+export default OAuth_API;

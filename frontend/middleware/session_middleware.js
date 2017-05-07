@@ -1,10 +1,11 @@
-import SessionConstants from '../action/session_actions';
+import {SessionConstants} from '../action/session_actions';
 import OAuth_API from '../util/o_auth_api.js';
-import Plans_Session_API from '../util_plans_api.js';
+import Plans_Session_API from '../util/plans_session_api.js';
 
-export const SessionMiddleware = ({getState, dispatch}) => (next) => (action) => {
+const SessionMiddleware = ({getState, dispatch}) => (next) => (action) => {
   var login_success = (session_data) => {dispatch(receiveSession(session_data));}
   var error;
+  console.log(`Session Middleware: ${JSON.stringify(action)}`);
 
   switch (action.type) {
     case SessionConstants.GOOGLE_LOGIN:
@@ -22,7 +23,7 @@ export const SessionMiddleware = ({getState, dispatch}) => (next) => (action) =>
         error = () => {console.log("error: gapi log-out");}
         OAuth_API.logout(error);
       } else {
-        error = () = > {console.log("error: Plans log-out");}
+        error = () => {console.log("error: Plans log-out");}
         Plans_Session_API.logout(error);
       }
       return next(action);
@@ -30,4 +31,6 @@ export const SessionMiddleware = ({getState, dispatch}) => (next) => (action) =>
     default:
       return next(action);
   }
-}
+};
+
+export default SessionMiddleware;
