@@ -5,8 +5,18 @@ import RootComponent from './component/root_component';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  var store;
-  store = configureStore();
-  window.store = store;
-  ReactDOM.render(<RootComponent store = {store}/>, document.getElementById("PLANS"));
+  var store, preloadedState;
+  setTimeout(() => {
+    var GAuth = gapi.auth2.getAuthInstance();
+    console.log(gapi);
+    if (GAuth.isSignedIn) {
+      preloadedState = {session: {currentUser: GAuth.currentUser.Ab.w3}};
+      store = configureStore(preloadedState);
+    } else {
+      store = configureStore();
+    }
+    ReactDOM.render(<RootComponent store = {store}/>, document.getElementById("PLANS"));
+    window.store = store;
+
+  }, 1000)
 });

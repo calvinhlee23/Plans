@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import Menubar from './menubar';
 
 const mapStateToProps = (state) => ({
-  isLogginedIn: Boolean(state.session.currentUser)
+  isLogginedIn: Boolean(state.session.currentUser),
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = () =>  ({

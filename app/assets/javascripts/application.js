@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= bundle
 //= gAuth
+//= bundle
 //= require_tree .
