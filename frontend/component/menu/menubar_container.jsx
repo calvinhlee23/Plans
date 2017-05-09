@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-
+import {logout} from '../../action/session_actions';
 import Menubar from './menubar';
 
 const mapStateToProps = (state) => ({
@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser
 });
 
-const mapDispatchToProps = () =>  ({
-
+const mapDispatchToProps = (dispatch, ownProps) =>  ({
+  logout: () => dispatch(logout())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menubar);

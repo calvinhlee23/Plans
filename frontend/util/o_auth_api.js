@@ -4,8 +4,9 @@ const OAuth_API = {
   login: (success, error) => {
     var GoogleAuth = gapi.auth2.getAuthInstance();
     if (GoogleAuth.isSignedIn.get()) {
+      // should be handled differently for production
       error();
-      console.log('already signed');
+      window.alert('already signed in.. now signing out')
       GoogleAuth.signOut()
     } else {
       GoogleAuth.signIn().then(() => {
@@ -19,7 +20,14 @@ const OAuth_API = {
   },
 
   logout: (error) => {
-
+    var GoogleAuth = gapi.auth2.getAuthInstance();
+    if (GoogleAuth.isSignedIn.get()) {
+      GoogleAuth.signOut();
+      // sign out from Plans session
+    } else {
+      error();
+      window.alert('you are not signed in')
+    }
   }
 };
 

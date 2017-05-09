@@ -5,6 +5,13 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    console.log(this.props.location.path);
+    if (this.props.location.path) {
+
+    }
+  }
   render() {
     return(
       <div className = "SessionForm">

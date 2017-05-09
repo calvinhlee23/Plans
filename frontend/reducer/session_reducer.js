@@ -13,6 +13,9 @@ const SessionReducer = (state = defaultState, action) => {
       newState = {currentUser: action.user.Ab.w3}
       console.log(newState);
       return merge({}, state, newState);
+    case SessionConstants.LOG_OUT:
+      newState = {}
+      return newState;
     default:
       return state;
   }

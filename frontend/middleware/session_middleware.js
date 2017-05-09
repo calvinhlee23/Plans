@@ -19,7 +19,8 @@ const SessionMiddleware = ({getState, dispatch}) => (next) => (action) => {
       return next(action);
 
     case SessionConstants.LOG_OUT:
-      if (getState().session.currentUser.gapi) {
+    console.log(getState());
+      if (getState().session.currentUser.Paa) {
         error = () => {console.log("error: gapi log-out");}
         OAuth_API.logout(error);
       } else {

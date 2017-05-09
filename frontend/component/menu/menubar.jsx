@@ -29,25 +29,27 @@ export default class Menubar extends React.Component {
     }
   }
 
-  handleClick(e) {
-    e.preventDefault();
-    hashHistory.push("/auth")
+  handleClick(str) {
+    if (str === "logout") {
+      return this.props.logout;
+    } else {
+      return () => {hashHistory.push(str)};
+    }
   }
 
   render () {
-    console.log('hihihhihihihi');
     if (this.state.renderLogout) {
       return(
       <menu className = "menubar">
         <h1>{JSON.stringify(this.props)}</h1>
-        <div onClick = {this.handleClick} className = "logout">Log Out</div>
+        <div onClick = {this.handleClick("logout")} className = "logout">Log Out</div>
         <Search/>
       </menu>);
     } else {
       return (
         <menu className = "menubar">
-          <div onClick = {this.handleClick} className = "signup">Sign Up</div>
-          <div onClick = {this.handleClick} className = "login">Log In</div>
+          <div onClick = {this.handleClick("auth")} className = "signup">Sign Up</div>
+          <div onClick = {this.handleClick("auth")} className = "login">Log In</div>
           <Search/>
         </menu>);
     }
