@@ -11,7 +11,14 @@ const OAuth_API = {
     } else {
       GoogleAuth.signIn().then(() => {
         if(GoogleAuth.isSignedIn.get()) {
-          success(GoogleAuth.currentUser);
+          var gU = GoogleAuth.currentUser;
+          // plans session api log in accepts
+          // user, success callback, and error callback
+          var user = {user_name: gU.Ab.w3.ofa,
+                      email: gU.Ab.w3.U3,
+                      is_goog_acc: true,
+                      google_access_token: gU.Ab.Zi.access_token};
+          Plans_Session_API.login({user}, success, error);
         }
       });
     }

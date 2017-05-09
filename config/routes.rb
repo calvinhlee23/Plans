@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
-  namespace :api, default: {format: :json} do
+  namespace :api, default: {format: [:json, :html]} do
     resources :users, only: [:create, :update, :destroy, :show]
     resources :sessions, only: [:create, :destroy]
 

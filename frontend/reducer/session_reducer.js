@@ -10,7 +10,7 @@ const SessionReducer = (state = defaultState, action) => {
   console.log(`Session Reducer: ${JSON.stringify(action)}`);
   switch (action.type) {
     case SessionConstants.RECEIVE_SESSION:
-      newState = {currentUser: action.user.Ab.w3}
+      newState = {currentUser: action.user}
       console.log(newState);
       return merge({}, state, newState);
     case SessionConstants.LOG_OUT:

@@ -1,11 +1,8 @@
 class Api::UsersController < ApplicationController
 
   def create
-    p '##################################################'
-    p "hiiiiiiiiiiiiiiiiiiii"
     user = User.new(users_param)
     if user.save
-      p "yoyoyoyoyoyo"
       login(user)
     else
       render user.errors.full_messages
@@ -15,7 +12,9 @@ class Api::UsersController < ApplicationController
   def show
     id = params[:id]
     @user = User.find_by_id(id)
-    render :show
+    p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+    p @user
+    render json: @user
   end
 
   def update
