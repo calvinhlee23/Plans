@@ -1,15 +1,20 @@
 import React from 'react';
 import GoogAuthButton from './goog_auth_button';
-
+import {hashHistory} from 'react-router';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    console.log(this.props.location.path);
-    if (this.props.location.path) {
+    if (this.props.isLogginedIn) {
+      hashHistory.push("/");
+    }
+  }
 
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.isLogginedIn) {
+      hashHistory.push("/");
     }
   }
   render() {

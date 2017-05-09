@@ -13,7 +13,6 @@ export default class Menubar extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.isLogginedIn);
     if(this.props.isLogginedIn) {
       this.setState({renderLogout: true});
     } else {
@@ -29,11 +28,13 @@ export default class Menubar extends React.Component {
     }
   }
 
-  handleClick(str) {
-    if (str === "logout") {
-      return this.props.logout;
-    } else {
-      return () => {hashHistory.push(str)};
+  handleClick(e) {
+    e.persist();
+    var value = e.target.value;
+    if (value === "logout") {
+      this.props.logout();
+    } else if (value === "auth"){
+      hashHistory.push(value);
     }
   }
 
@@ -42,14 +43,13 @@ export default class Menubar extends React.Component {
       return(
       <menu className = "menubar">
         <h1>{JSON.stringify(this.props)}</h1>
-        <div onClick = {this.handleClick("logout")} className = "logout">Log Out</div>
+        <button onClick = {this.handleClick} value = "logout" className = "auth-button">Log Out</button><br/>
         <Search/>
       </menu>);
     } else {
       return (
         <menu className = "menubar">
-          <div onClick = {this.handleClick("auth")} className = "signup">Sign Up</div>
-          <div onClick = {this.handleClick("auth")} className = "login">Log In</div>
+          <button onClick = {this.handleClick} value = "auth" className = "auth-button">Connect</button><br/>
           <Search/>
         </menu>);
     }
