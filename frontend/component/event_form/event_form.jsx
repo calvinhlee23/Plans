@@ -6,10 +6,12 @@ export default class EventForm extends React.Component {
     super(props);
     this.state = {
       title: null,
-      discription: null,
+      description: null,
       time: null,
       location: null
-    }
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
@@ -25,7 +27,29 @@ export default class EventForm extends React.Component {
     }
   }
 
+  handleChange() {
+
+  }
+
+  handleClick() {
+
+  }
+
   render() {
-    return (<form className = "event-form">HI THIS IS EVENT FORM</form>);
+    return (
+    <form className = "event-form">
+    <h1>THIS IS EVENT FORM</h1>
+    <table>
+    <tr>
+      <th>Title: </th>
+      <th><input onChange = {this.handleChange} value = {this.state.title}></input></th>
+    </tr>
+    <tr><th>Description: </th><th><input onChange = {this.handleChange} value = {this.state.description}></input></th></tr>
+    <tr><th>Time: </th><th><input onChange = {this.handleChange} value = {this.state.time}></input></th></tr>
+    <tr><th>Location: </th><th><input onChange = {this.handleChange} value = {this.state.location}></input></th></tr>
+    <tr><th><button value = "/" onClick = {()=>{hashHistory.push("/")}}>Cancel</button></th>
+        <th><button value = "submit" onClick = {this.handleClick}>Submit</button></th></tr>
+    </table>
+    </form>);
   }
 }
