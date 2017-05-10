@@ -8,11 +8,12 @@ class Api::SessionsController < ApplicationController
       if user
         p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
         p user
-        user.expires = info[:expires]
+        user.expires = info[:expires].second.from_now
         user.save
         google_login(user)
       else
-        info[:session_token] = info.delete(:google_access_token)
+        info[:session_token] = info.delete(:google_id_token)
+        info[:expires] = info[:expires].second.from_now
         new_user = User.new(info)
         if new_user.save
             google_login(new_user);

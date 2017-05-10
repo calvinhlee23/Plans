@@ -1,5 +1,5 @@
 class AddExpiresAtToUser < ActiveRecord::Migration
   def change
-    add_column :users, :expires, :integer 
+    add_column :users, :expires, :time
   end
 end

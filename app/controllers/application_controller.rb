@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   def google_login(user)
     # google's session token already renews
     if user.is_goog_acc
-      cookies.signed[:session] = { value: user.session_token, expires: user.expires.second.from_now }
+      # 1 year expiration is arbitrary since google_id_token is meant to not expire.
+      cookies.signed[:session] = { value: user.session_token, expires: 1.year.from_now }
     else
       raise 'you have tried to login as a google user when youre not'
     end
