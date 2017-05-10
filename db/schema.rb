@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170510195907) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "attendances", ["event_id"], name: "index_attendances_on_event_id", using: :btree
   add_index "attendances", ["user_id", "event_id"], name: "index_attendances_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170510195907) do
     t.integer  "creator_id",                     null: false
   end
 
+  add_index "events", ["creator_id"], name: "index_events_on_creator_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "user_name",       null: false
     t.string   "email",           null: false
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170510195907) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "is_goog_acc",     null: false
-    t.integer  "expires"
+    t.datetime "expires"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
