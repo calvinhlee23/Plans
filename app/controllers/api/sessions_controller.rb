@@ -6,6 +6,10 @@ class Api::SessionsController < ApplicationController
     if info[:is_goog_acc]
       user = User.find_by_email(info[:email]);
       if user
+        p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+        p user
+        user.expires = info[:expires]
+        user.save
         google_login(user)
       else
         info[:session_token] = info.delete(:google_access_token)
@@ -27,7 +31,7 @@ class Api::SessionsController < ApplicationController
   end
   private
   def sessions_param
-    params.require(:user).permit(:email, :password, :user_name, :is_goog_acc, :google_access_token)
+    params.require(:user).permit(:email, :password, :user_name, :is_goog_acc, :google_access_token, :expires)
   end
 
 

@@ -6,13 +6,16 @@ class ApplicationController < ActionController::Base
 
   def login(user)
     user.reset_session_token
-    session[:session] = user.session_token
+    cookies.signed[:session] = user.session_token
   end
 
   def google_login(user)
     # google's session token already renews
-    cookies.signed[:session] = { value: user.user_name, expires: 2.weeks.from_now }
-    p "googleeeeeeeeeeee loginnnnnnnnnnnn"
+    if user.is_goog_acc
+      cookies.signed[:session] = { value: user.session_token, expires: user.expires.second.from_now }
+    else
+      raise 'you have tried to login as a google user when youre not'
+    end
   end
 
   def logged_in?
@@ -27,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_current_user
-    @current_user ||= User.find_by_user_name(cookies.signed[:session])
+    @current_user ||= User.find_by_session_token(cookies.signed[:session])
   end
 end

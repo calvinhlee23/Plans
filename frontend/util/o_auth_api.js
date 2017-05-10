@@ -17,7 +17,8 @@ const OAuth_API = {
           var user = {user_name: gU.Ab.w3.ofa,
                       email: gU.Ab.w3.U3,
                       is_goog_acc: true,
-                      google_access_token: gU.Ab.Zi.access_token};
+                      google_access_token: gU.Ab.Zi.access_token,
+                      expires: gU.Ab.Zi.expires_in};
           Plans_Session_API.login({user}, success, error);
         }
       });
