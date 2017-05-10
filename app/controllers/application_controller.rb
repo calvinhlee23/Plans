@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def google_login(user)
     # google's session token already renews
-    session[:session] = user.session_token
+    cookies.signed[:session] = { value: user.user_name, expires: 2.weeks.from_now }
     p "googleeeeeeeeeeee loginnnnnnnnnnnn"
   end
 
@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
 
   def logout
     get_current_user.reset_session_token
+    cookies.delete :session
     @current_user = nil
-    reset_session
   end
 
   def get_current_user
-    @current_user ||= User.find_by_session_token(session[:session])
+    @current_user ||= User.find_by_user_name(cookies.signed[:session])
   end
 end

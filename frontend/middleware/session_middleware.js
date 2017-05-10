@@ -20,13 +20,12 @@ const SessionMiddleware = ({getState, dispatch}) => (next) => (action) => {
 
     case SessionConstants.LOG_OUT:
     console.log(getState());
-      if (getState().session.currentUser.Paa) {
+      if (getState().session.currentUser.is_goog_acc) {
         error = () => {console.log("error: gapi log-out");}
         OAuth_API.logout(error);
-      } else {
-        error = () => {console.log("error: Plans log-out");}
-        Plans_Session_API.logout(error);
       }
+      error = () => {console.log("error: Plans log-out");}
+      Plans_Session_API.logout(error);
       return next(action);
 
     default:

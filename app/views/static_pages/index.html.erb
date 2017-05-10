@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <title>Plans</title>
   </head>
-  <script src="https://apis.google.com/js/api.js"></script>
+
+  <body>
+    <div id = "PLANS"/>
+  </body>
   <script src="https://apis.google.com/js/api.js"
   onload="this.onload=function(){};handleClientLoad()"
   onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>
-  <body>
-    <div id = "PLANS"/>
-  </body>
+
+  <script type="text/javascript">
+  window.pjplcu = <%= @user.to_json.html_safe %>
+  </script>
 </html>
