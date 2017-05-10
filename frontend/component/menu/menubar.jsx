@@ -42,7 +42,7 @@ export default class Menubar extends React.Component {
     if (this.state.renderLogout) {
       return(
       <menu className = "menubar">
-        <h1>{JSON.stringify(this.props.currentUser)}</h1>
+        <h1>{JSON.stringify(this.props.currentUser.user_name) + JSON.stringify(this.props.currentUser.email)}</h1>
         <button onClick = {this.handleClick} value = "logout" className = "auth-button">Log Out</button><br/>
         <Search/>
       </menu>);

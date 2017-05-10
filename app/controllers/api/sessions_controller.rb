@@ -1,25 +1,25 @@
 class Api::SessionsController < ApplicationController
   def create
     info = sessions_param
-    p '#####################################3'
-    p info
+    info[:session_token] = info.delete(:google_id_token)
+    info[:expires] = info[:expires].to_i.second.from_now
+    # if this is a google_acc
     if info[:is_goog_acc]
       user = User.find_by_email(info[:email]);
       if user
-        p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-        p user
+        # update access_token
         user.expires = info[:expires].to_i.second.from_now
-        user.save
-        google_login(user)
+        # update session_token
+        user.session_token = info[:session_token]
+        google_login(user) if user.save
       else
-        info[:session_token] = info.delete(:google_id_token)
-        info[:expires] = info[:expires].to_i.second.from_now
         new_user = User.new(info)
         if new_user.save
             google_login(new_user);
         end
       end
     else
+      # if this is not a google_acc
       user = User.validate_email_pw(info.email, info.password)
       login(user) if user
     end
