@@ -8,12 +8,12 @@ class Api::SessionsController < ApplicationController
       if user
         p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
         p user
-        user.expires = info[:expires].second.from_now
+        user.expires = info[:expires].to_i.second.from_now
         user.save
         google_login(user)
       else
         info[:session_token] = info.delete(:google_id_token)
-        info[:expires] = info[:expires].second.from_now
+        info[:expires] = info[:expires].to_i.second.from_now
         new_user = User.new(info)
         if new_user.save
             google_login(new_user);
@@ -32,7 +32,7 @@ class Api::SessionsController < ApplicationController
   end
   private
   def sessions_param
-    params.require(:user).permit(:email, :password, :user_name, :is_goog_acc, :google_access_token, :expires)
+    params.require(:user).permit(:email, :password, :user_name, :is_goog_acc, :google_id_token, :expires)
   end
 
 
