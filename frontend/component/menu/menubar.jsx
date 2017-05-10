@@ -6,25 +6,24 @@ export default class Menubar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldBeHidden: false,
-      renderLogout: false
+      renderAsLoggedIn: false
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
     if(this.props.isLogginedIn) {
-      this.setState({renderLogout: true});
+      this.setState({renderAsLoggedIn: true});
     } else {
-      this.setState({renderLogout: false});
+      this.setState({renderAsLoggedIn: false});
     }
   }
 
   componentWillReceiveProps(nextProp) {
     if (nextProp.isLogginedIn) {
-      this.setState({renderLogout: true});
+      this.setState({renderAsLoggedIn: true});
     } else {
-      this.setState({renderLogout: false});
+      this.setState({renderAsLoggedIn: false});
     }
   }
 
@@ -33,22 +32,25 @@ export default class Menubar extends React.Component {
     var value = e.target.value;
     if (value === "logout") {
       this.props.logout();
-    } else if (value === "auth"){
+    } else {
       hashHistory.push(value);
     }
   }
 
   render () {
-    if (this.state.renderLogout) {
+    if (this.state.renderAsLoggedIn) {
       return(
       <menu className = "menubar">
-        <h1>{JSON.stringify(this.props.currentUser.user_name) + JSON.stringify(this.props.currentUser.email)}</h1>
-        <button onClick = {this.handleClick} value = "logout" className = "auth-button">Log Out</button><br/>
+        <button onClick = {this.handleClick} value = "/" className = "logo">logo</button> <br/>
         <Search/>
+        <button onClick = {this.handleClick} value = "createEvent" className = "create-event-button">Create Event</button><br/>
+        <h3>{JSON.stringify(this.props.currentUser.user_name) + JSON.stringify(this.props.currentUser.email)}</h3>
+        <button onClick = {this.handleClick} value = "logout" className = "auth-button">Log Out</button>
       </menu>);
     } else {
       return (
         <menu className = "menubar">
+          <a onClick = {this.handleClick} className = "logo" value = "/">Logo</a><br/>
           <button onClick = {this.handleClick} value = "auth" className = "auth-button">Connect</button><br/>
           <Search/>
         </menu>);
