@@ -5,10 +5,11 @@ export default class EventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: null,
-      description: null,
-      time: null,
-      location: null
+      title: "",
+      description: "",
+      date: "",
+      time: "",
+      location: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -40,15 +41,32 @@ export default class EventForm extends React.Component {
     <form className = "event-form">
     <h1>THIS IS EVENT FORM</h1>
     <table>
-    <tr>
-      <th>Title: </th>
-      <th><input onChange = {this.handleChange} value = {this.state.title}></input></th>
-    </tr>
-    <tr><th>Description: </th><th><input onChange = {this.handleChange} value = {this.state.description}></input></th></tr>
-    <tr><th>Time: </th><th><input onChange = {this.handleChange} value = {this.state.time}></input></th></tr>
-    <tr><th>Location: </th><th><input onChange = {this.handleChange} value = {this.state.location}></input></th></tr>
-    <tr><th><button value = "/" onClick = {()=>{hashHistory.push("/")}}>Cancel</button></th>
-        <th><button value = "submit" onClick = {this.handleClick}>Submit</button></th></tr>
+    <tbody>
+      <tr>
+        <th>Title:</th>
+        <th><input onChange = {this.handleChange} value = {this.state.title}></input></th>
+      </tr>
+      <tr>
+        <th>Description:</th>
+        <th><input onChange = {this.handleChange} value = {this.state.description}/></th>
+      </tr>
+      <tr>
+        <th>Date:</th>
+        <th><input onChange = {this.handleChange} value = {this.state.date} placeholder = {"mm/dd/year"}/></th>
+      </tr>
+      <tr>
+        <th>Time:</th>
+        <th><input onChange = {this.handleChange} value = {this.state.time}/></th>
+      </tr>
+      <tr>
+        <th>Location:</th>
+        <th><input onChange = {this.handleChange} value = {this.state.location}/></th>
+      </tr>
+      <tr>
+        <th><button value = "/" onClick = {()=>{hashHistory.push("/")}}>Cancel</button></th>
+          <th><button value = "submit" onClick = {this.handleClick}>Submit</button></th>
+      </tr>
+    </tbody>
     </table>
     </form>);
   }
