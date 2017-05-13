@@ -6,6 +6,12 @@ export default class CurrentUserEvents extends React.Component {
   }
 
   render() {
-    return(<h2>My Events</h2>);
+    return(<div className = "current-user-events">
+            <h2>My Events</h2>
+            <ul className = "current-user-events-list">
+              <li>{JSON.stringify(this.props.cuEvents)}</li>
+            </ul>
+           </div>
+         );
   }
 }

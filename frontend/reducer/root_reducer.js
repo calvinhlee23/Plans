@@ -4,5 +4,5 @@ import SessionReducer from './session_reducer';
 import CUEventReducer from './cu_event_reducer';
 export default combineReducers({
   session: SessionReducer,
-  cuEv: CUEventReducer,
+  cuEvents: CUEventReducer,
 });

@@ -26,6 +26,13 @@ class Api::SessionsController < ApplicationController
     render json: get_current_user
   end
 
+  def get_current_user_events
+    p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+    user = get_current_user
+    events = user.events
+    render json: [events]
+  end
+
   def destroy
     logout
     render json: {}

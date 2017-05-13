@@ -8,7 +8,11 @@ export default class Main extends React.Component {
     super(props);
   }
 
-
+  componentDidMount() {
+    if (this.props.isLogginedIn) {
+      this.props.fetchCUComingEvents();
+    }
+  }
   render() {
     if (this.props.isLogginedIn) {
       return(
@@ -16,7 +20,7 @@ export default class Main extends React.Component {
         <h1>Main</h1>
         <Side/>
         <Map/>
-        <CurrentUserEvents/>
+        <CurrentUserEvents cuEvents = {this.props.cuEvents}/>
         </main>
       );
     } else {

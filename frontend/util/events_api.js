@@ -1,12 +1,13 @@
-const EventAPI = ({
+const Events_API = ({
   fetchCUComingEvents: (success, error) => {
     $.ajax({
       method: "GET",
-      urls: "/api/cuEvents",
+      url: "/api/cuEvents",
+      dataType: "json",
       success,
       error
     });
   },
 });
 
-export default EventAPI;
+export default Events_API;

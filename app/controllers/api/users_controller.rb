@@ -12,8 +12,6 @@ class Api::UsersController < ApplicationController
   def show
     id = params[:id]
     @user = User.find_by_id(id)
-    p '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-    p @user
     render json: @user
   end
 
